@@ -9,6 +9,10 @@ public class Toy {
         this.name = name;
     }
 
+    public void play() {
+        System.out.println("Juhu zabawa!");
+    }
+
     @Override
     public String toString() {
         return "Toy{" +

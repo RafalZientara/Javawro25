@@ -1,4 +1,4 @@
-package pl.sda.rafal.zientara.game.lesson3;
+package pl.sda.rafal.zientara.game.lesson3.streams;
 
 public class Employee {
     private final String surname;

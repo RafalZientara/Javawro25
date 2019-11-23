@@ -1,4 +1,4 @@
-package pl.sda.rafal.zientara.game.lesson3;
+package pl.sda.rafal.zientara.game.lesson3.streams;
 
 import java.util.Arrays;
 

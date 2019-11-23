@@ -1,10 +1,10 @@
-package pl.sda.rafal.zientara.game.lesson3;
+package pl.sda.rafal.zientara.game.lesson3.streams;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MainZad3 {
+public class MainZad3Dod {
 
     public static void main(String[] args) {
         List<Employee> employee = Arrays.asList(
@@ -15,7 +15,8 @@ public class MainZad3 {
         );
         List<String> names = employee.stream()
                 .filter(emp -> emp.getAge() > 30 && emp.getSalary() < 4000)
-                .map(emp -> emp.getName() + " " + emp.getSurname())
+                .peek(emp -> emp.setSalary(emp.getSalary() * 1.1))
+                .map(Employee::toString)
                 .collect(Collectors.toList());
         System.out.println(names);
     }

@@ -1,6 +1,6 @@
 package pl.sda.rafal.zientara.game.lesson3.optional;
 
-import pl.sda.rafal.zientara.game.lesson3.Employee;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import pl.sda.rafal.zientara.game.lesson3.optional.model.Toy;
 
 import java.util.Arrays;
@@ -33,11 +33,18 @@ public class DatabaseOptionalMain {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return new Toy(7, "chomik inne sąsiada");
+                return new Toy(7, "chomik innego sąsiada");
             }
         });
         System.out.println(hamster);
 //        Toy toy1 = toyOptional.get();//NPE!
 //        System.out.println(toyOptional);
+        try {
+            Toy toy = toyOptional.orElseThrow(() -> new NotFound());
+            System.out.println(toy);
+        } catch (NotFound notFound) {
+            notFound.printStackTrace();
+            System.out.println("Nie ma takiego produktu!");
+        }
     }
 }
