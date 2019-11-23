@@ -4,7 +4,7 @@ public class Employee {
     private final String surname;
     private final String name;
     private final int age;
-    private final double salary;
+    private double salary;
 
     public Employee(String surname, String name, int age, double salary) {
         this.surname = surname;
@@ -27,6 +27,10 @@ public class Employee {
 
     public double getSalary() {
         return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     @Override
