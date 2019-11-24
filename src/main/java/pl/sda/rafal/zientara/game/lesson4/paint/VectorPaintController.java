@@ -2,13 +2,21 @@ package pl.sda.rafal.zientara.game.lesson4.paint;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Oval;
+import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Rectangle;
+import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Shape;
 
 public class VectorPaintController {
 
     @FXML
-    private TextField canvas;
+    private VectorCanvas canvas;
+
+    private Tool currentTool = Tool.RECTANGLE;
+    double startX;
+    double startY;
+    double endX;
+    double endY;
 
     @FXML
     public void initialize() {
@@ -16,28 +24,66 @@ public class VectorPaintController {
         canvas.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                double x = event.getX();
-                double y = event.getY();
-                System.out.println("pressed = " + x + ", " + y);
+                startX = event.getX();
+                startY = event.getY();
+                System.out.println("pressed = " + startX + ", " + startY);
             }
         });
         canvas.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                double x = event.getX();
-                double y = event.getY();
-                System.out.println("released = " + x + ", " + y);
+                endX = event.getX();
+                endY = event.getY();
+                System.out.println("released = " + endX + ", " + endY);
+                Shape shape = createShape();
+                canvas.setCurrentShape(shape);
+                canvas.refresh();
             }
         });
         canvas.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                double x = event.getX();
-                double y = event.getY();
-                System.out.println("dragged = " + x + ", " + y);
+                endX = event.getX();
+                endY = event.getY();
+                System.out.println("dragged = " + endX + ", " + endY);
+                Shape shape = createShape();
+                canvas.setCurrentShape(shape);
+                canvas.refresh();
             }
         });
     }
 
+    @FXML
+    private void handleRectButton() {
+        currentTool = Tool.RECTANGLE;
+    }
 
+    @FXML
+    private void handleOvalButton() {
+        currentTool = Tool.OVAL;
+    }
+
+    @FXML
+    private void handleLineButton() {
+        currentTool = Tool.LINE;
+    }
+
+    @FXML
+    private void handleTriaButton() {
+        currentTool = Tool.TRIANGLE;
+    }
+
+    private Shape createShape() {
+        double x = Math.min(startX, endX);
+        double y = Math.min(startY, endY);
+        double width = Math.abs(endX - startX);
+        double height = Math.abs(endY - startY);
+        switch (currentTool) {
+            default:
+            case RECTANGLE:
+                return new Rectangle(x, y, width, height);
+            case OVAL:
+                return new Oval(x, y, width, height);
+        }
+    }
 }

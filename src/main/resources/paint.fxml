@@ -6,19 +6,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
+<?import pl.sda.rafal.zientara.game.lesson4.paint.VectorCanvas?>
 <AnchorPane fx:controller="pl.sda.rafal.zientara.game.lesson4.paint.VectorPaintController" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
     <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-        <TextField fx:id="canvas" prefHeight="500.0" prefWidth="700.0" />
+        <VectorCanvas fx:id="canvas"
+                      prefHeight="500.0"
+                      prefWidth="700.0" />
       </center>
       <left>
         <VBox prefHeight="200.0" prefWidth="100.0">
           <children>
-            <Button fx:id="rectButton" mnemonicParsing="false" text="Rect" />
-            <Button fx:id="ovalButton" mnemonicParsing="false" text="Oval" />
-            <Button fx:id="lineButton" mnemonicParsing="false" text="Line" />
-            <Button fx:id="triaButton" mnemonicParsing="false" text="Tria" />
+            <Button fx:id="rectButton" onAction="#handleRectButton" mnemonicParsing="false" text="Rect" />
+            <Button fx:id="ovalButton" onAction="#handleOvalButton" mnemonicParsing="false" text="Oval" />
+            <Button fx:id="lineButton" onAction="#handleLineButton" mnemonicParsing="false" text="Line" />
+            <Button fx:id="triaButton" onAction="#handleTriaButton" mnemonicParsing="false" text="Tria" />
           </children>
         </VBox>
       </left>
