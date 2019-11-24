@@ -8,6 +8,6 @@ public class CowGMO extends Cow {
 
     @Override
     public int getMilk() {
-        return super.getMilk() * 100 + 400;
+        return super.getMilk() * 100 + 80;
     }
 }
