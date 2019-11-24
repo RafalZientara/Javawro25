@@ -3,6 +3,7 @@ package pl.sda.rafal.zientara.game.lesson3.streams;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MainZad3Dod {
 
@@ -13,11 +14,13 @@ public class MainZad3Dod {
                 new Employee("Kot", "Zofia", 33, 3700.0),
                 new Employee("Puchacz", "Jan", 41, 3600.0)
         );
-        List<String> names = employee.stream()
+        Stream<String> stringStream = employee.stream()
                 .filter(emp -> emp.getAge() > 30 && emp.getSalary() < 4000)
                 .peek(emp -> emp.setSalary(emp.getSalary() * 1.1))
-                .map(Employee::toString)
-                .collect(Collectors.toList());
-        System.out.println(names);
+                .map(Employee::toString);
+        stringStream
+                .forEach(text -> System.out.println(text));
+//                .collect(Collectors.toList());
+//        System.out.println(names);
     }
 }
