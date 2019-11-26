@@ -1,10 +1,10 @@
 package pl.sda.rafal.zientara.game.lesson3.optional;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import pl.sda.rafal.zientara.game.lesson3.optional.model.Toy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.MissingResourceException;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -40,9 +40,9 @@ public class DatabaseOptionalMain {
 //        Toy toy1 = toyOptional.get();//NPE!
 //        System.out.println(toyOptional);
         try {
-            Toy toy = toyOptional.orElseThrow(() -> new NotFound());
+            Toy toy = toyOptional.orElseThrow(() -> new NoToyException());
             System.out.println(toy);
-        } catch (NotFound notFound) {
+        } catch (NoToyException notFound) {
             notFound.printStackTrace();
             System.out.println("Nie ma takiego produktu!");
         }
