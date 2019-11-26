@@ -51,6 +51,7 @@ public class VectorPaintController {
                 canvas.refresh();
             }
         });
+        canvas.refresh();
     }
 
     @FXML
