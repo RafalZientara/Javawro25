@@ -5,8 +5,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Shape;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VectorCanvas extends Canvas {
     private Shape currentShape;
+    private List<Shape> shapeList = new ArrayList<>();
 
     public VectorCanvas() {
         setFocused(false);
