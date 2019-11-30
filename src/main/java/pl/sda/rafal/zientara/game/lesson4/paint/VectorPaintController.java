@@ -94,7 +94,7 @@ public class VectorPaintController {
             case LINE:
                 return new Line(startX, startY, endX, endY);
             case SQUARE:
-                return new Square(x, y, width, height);
+                return new Star(x, y, width, height);
         }
     }
 }
