@@ -19,7 +19,9 @@ public class VectorCanvas extends Canvas {
 
     public void refresh() {
         GraphicsContext gc = getGraphicsContext2D();
+        gc.setStroke(Color.BLACK);
         gc.clearRect(0, 0, getWidth(), getHeight());
+        gc.strokeRect(0,0,getWidth(),getHeight());
         //todo
         gc.setFill(Color.AQUAMARINE);
         gc.fillRect(50, 50, 100, 100);
@@ -41,5 +43,9 @@ public class VectorCanvas extends Canvas {
 
     public Shape getCurrentShape() {
         return currentShape;
+    }
+
+    public List<Shape> getShapeList() {
+        return shapeList;
     }
 }

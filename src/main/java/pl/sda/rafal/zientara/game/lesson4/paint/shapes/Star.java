@@ -46,4 +46,9 @@ public class Star extends Shape {
         gc.stroke();
         gc.closePath();
     }
+
+    @Override
+    public String convertToString() {
+        return String.format("SQUA;%f;%f;%f;%s%s;",x,y,diameter,getFillColor(),getStrokeColor());
+    }
 }

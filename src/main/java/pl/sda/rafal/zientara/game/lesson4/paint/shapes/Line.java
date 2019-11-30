@@ -22,4 +22,17 @@ public class Line extends Shape {
         gc.setStroke(getStrokeColor());
         gc.strokeLine(x1, y1, x2, y2);
     }
+
+    @Override
+    public String convertToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("LINE;")
+                .append(x1).append(";")
+                .append(y1).append(";")
+                .append(x2).append(";")
+                .append(y2).append(";")
+                .append(getFillColor()).append(";")
+                .append(getStrokeColor()).append(";");
+        return sb.toString();
+    }
 }

@@ -23,4 +23,9 @@ public class Square extends Shape {
         gc.fillRect(x, y, side, side);
         gc.strokeRect(x, y, side, side);
     }
+
+    @Override
+    public String convertToString() {
+        return String.format("SQUA;%f;%f;%f;%s%s;",x,y,side,getFillColor(),getStrokeColor());
+    }
 }
