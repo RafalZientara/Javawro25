@@ -2,13 +2,30 @@ package pl.sda.rafal.zientara.game.lesson4.paint;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import pl.sda.rafal.zientara.game.lesson4.paint.shapes.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class VectorPaintController {
 
     @FXML
     private VectorCanvas canvas;
+
+    @FXML
+    private ColorPicker strokePicker;
+
+    @FXML
+    private ColorPicker fillPicker;
 
     private Tool currentTool = Tool.RECTANGLE;
     double startX;
@@ -33,7 +50,7 @@ public class VectorPaintController {
                 endX = event.getX();
                 endY = event.getY();
                 System.out.println("released = " + endX + ", " + endY);
-                Shape shape = createShape();
+                Shape shape = createModifiedShape();
                 canvas.addShape(shape);
                 canvas.setCurrentShape(null);
                 canvas.refresh();
@@ -45,7 +62,7 @@ public class VectorPaintController {
                 endX = event.getX();
                 endY = event.getY();
                 System.out.println("dragged = " + endX + ", " + endY);
-                Shape shape = createShape();
+                Shape shape = createModifiedShape();
                 canvas.setCurrentShape(shape);
                 canvas.refresh();
             }
@@ -76,6 +93,51 @@ public class VectorPaintController {
     @FXML
     private void handleTriaButton() {
         currentTool = Tool.TRIANGLE;
+    }
+
+    @FXML
+    private void handleSaveButton() {
+        System.out.println("SAVE!");
+        List<Shape> shapeList = canvas.getShapeList();
+        Optional<String> output = shapeList.stream()
+                .map(shape -> shape.convertToString())
+                .reduce((acc, text) -> acc + "\n"+ text );
+        if (output.isPresent()) {
+            //todo save to file
+            System.out.println(output.get());
+            FileChooser fileChooser = new FileChooser();
+
+            //Set extension filter for text files
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("YOLO files (*.yolo)", "*.yolo");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            //Show save file dialog
+            File file = fileChooser.showSaveDialog(new Stage());
+
+            if (file != null) {
+                saveTextToFile(output.get(), file);
+            }
+        } else {
+            System.out.println("Nothing to do here!");
+        }
+    }
+
+    private void saveTextToFile(String content, File file) {
+        try {
+            PrintWriter writer;
+            writer = new PrintWriter(file);
+            writer.println(content);
+            writer.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private Shape createModifiedShape() {
+        Shape shape = createShape();
+        shape.setFillColor(fillPicker.getValue());
+        shape.setStrokeColor(strokePicker.getValue());
+        return shape;
     }
 
     private Shape createShape() {
