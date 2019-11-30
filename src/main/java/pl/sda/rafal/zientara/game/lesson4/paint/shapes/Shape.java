@@ -33,4 +33,6 @@ public abstract class Shape {
     }
 
     public abstract void draw(GraphicsContext gc);
+
+    public abstract String convertToString();
 }
