@@ -11,7 +11,6 @@ public class RunnableMain {
     }
 
     private static class Quest implements Runnable {
-
         @Override
         public void run() {
             Thread thread = Thread.currentThread();

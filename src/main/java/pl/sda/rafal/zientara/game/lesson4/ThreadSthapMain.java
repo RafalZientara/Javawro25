@@ -16,6 +16,12 @@ public class ThreadSthapMain {
         do {
             System.out.println("Napisz exit aby przerwac");
             next = scanner.next();
+
+            try {
+                next.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } while (!"exit".equals(next));
         System.out.println("Giń!");
         thread.interrupt();
