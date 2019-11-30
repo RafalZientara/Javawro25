@@ -85,6 +85,7 @@ public class VectorPaintController {
                 return new Rectangle(x, y, width, height);
             case OVAL:
                 return new Oval(x, y, width, height);
+
         }
     }
 }

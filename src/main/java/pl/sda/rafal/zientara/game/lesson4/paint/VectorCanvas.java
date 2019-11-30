@@ -7,6 +7,7 @@ import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Shape;
 
 public class VectorCanvas extends Canvas {
     private Shape currentShape;
+    private List<Shape> 
 
     public VectorCanvas() {
         setFocused(false);
