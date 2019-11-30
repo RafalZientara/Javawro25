@@ -1,11 +1,10 @@
 package pl.sda.rafal.zientara.game.lesson4.paint;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Oval;
-import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Rectangle;
-import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Shape;
+import pl.sda.rafal.zientara.game.lesson4.paint.shapes.*;
 
 public class VectorPaintController {
 
@@ -36,7 +35,8 @@ public class VectorPaintController {
                 endY = event.getY();
                 System.out.println("released = " + endX + ", " + endY);
                 Shape shape = createShape();
-                canvas.setCurrentShape(shape);
+                canvas.addShape(shape);
+                canvas.setCurrentShape(null);
                 canvas.refresh();
             }
         });
@@ -74,6 +74,15 @@ public class VectorPaintController {
         currentTool = Tool.TRIANGLE;
     }
 
+    @FXML
+    public void handleSquareButton() {
+        currentTool = Tool.SQUARE;
+    }
+    @FXML
+    public void handleStarButton() {
+        currentTool = Tool.STAR;
+    }
+
     private Shape createShape() {
         double x = Math.min(startX, endX);
         double y = Math.min(startY, endY);
@@ -85,7 +94,16 @@ public class VectorPaintController {
                 return new Rectangle(x, y, width, height);
             case OVAL:
                 return new Oval(x, y, width, height);
-
+            case LINE:
+                return new Line(startX, startY, endX, endY);
+            case TRIANGLE:
+                return new Triangle(x, y, width, height);
+            case SQUARE:
+                return new Square(x, y, width, height);
+            case STAR:
+                return new Star(x, y, width, height);
         }
     }
+
+
 }
