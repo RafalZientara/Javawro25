@@ -19,6 +19,8 @@
         <VBox prefHeight="200.0" prefWidth="100.0">
           <children>
             <Button fx:id="rectButton" onAction="#handleRectButton" mnemonicParsing="false" text="Rect" />
+            <Button fx:id="squaButton" onAction="#handleSquaButton" mnemonicParsing="false" text="Squa" />
+            <Button fx:id="starButton" onAction="#handleStarButton" mnemonicParsing="false" text="Star" />
             <Button fx:id="ovalButton" onAction="#handleOvalButton" mnemonicParsing="false" text="Oval" />
             <Button fx:id="lineButton" onAction="#handleLineButton" mnemonicParsing="false" text="Line" />
             <Button fx:id="triaButton" onAction="#handleTriaButton" mnemonicParsing="false" text="Tria" />

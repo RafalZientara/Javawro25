@@ -5,11 +5,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Shape;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VectorCanvas extends Canvas {
     private Shape currentShape;
-    private List<Shape> shapeList;
+    private List<Shape> shapeList = new ArrayList<>();
 
     public VectorCanvas() {
         setFocused(false);
@@ -25,6 +26,13 @@ public class VectorCanvas extends Canvas {
         if (currentShape != null) {
             currentShape.draw(gc);
         }
+        for (Shape shape : shapeList){
+            shape.draw(gc);
+        }
+    }
+
+    public void addShape(Shape newShape){
+        shapeList.add(newShape);
     }
 
     public void setCurrentShape(Shape currentShape) {
