@@ -23,9 +23,16 @@ public class VectorCanvas extends Canvas {
         //todo
         gc.setFill(Color.AQUAMARINE);
         gc.fillRect(50, 50, 100, 100);
+        for (Shape shape:shapeList){
+            shape.draw(gc);
+        }
         if (currentShape != null) {
             currentShape.draw(gc);
         }
+    }
+
+    public void addShape(Shape newShape){
+        shapeList.add(newShape);
     }
 
     public void setCurrentShape(Shape currentShape) {
