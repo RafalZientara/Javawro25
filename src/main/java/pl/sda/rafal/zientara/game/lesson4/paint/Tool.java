@@ -7,4 +7,6 @@ public enum Tool {
     TRIANGLE,
     SQUARE,
     STAR,
+    SAVE,
+
 }

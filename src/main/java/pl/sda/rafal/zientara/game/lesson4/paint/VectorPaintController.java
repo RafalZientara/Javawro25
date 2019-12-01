@@ -2,13 +2,25 @@ package pl.sda.rafal.zientara.game.lesson4.paint;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import pl.sda.rafal.zientara.game.lesson4.paint.shapes.*;
+
+import java.util.List;
 
 public class VectorPaintController {
 
     @FXML
     private VectorCanvas canvas;
+
+    @FXML
+    private ColorPicker strokePicker;
+
+    @FXML
+    private ColorPicker fillPicker;
+
+
+
 
     private Tool currentTool = Tool.RECTANGLE;
     double startX;
@@ -33,7 +45,7 @@ public class VectorPaintController {
                 endX = event.getX();
                 endY = event.getY();
                 System.out.println("released = " + endX + ", " + endY);
-                Shape shape = createShape();
+                Shape shape = createModifiedShape();
                 canvas.setCurrentShape(shape);
                 canvas.refresh();
             }
@@ -44,7 +56,7 @@ public class VectorPaintController {
                 endX = event.getX();
                 endY = event.getY();
                 System.out.println("dragged = " + endX + ", " + endY);
-                Shape shape = createShape();
+                Shape shape = createModifiedShape();
                 canvas.addShape(shape);
                 canvas.setCurrentShape(null);
                 canvas.refresh();
@@ -81,6 +93,18 @@ public class VectorPaintController {
     @FXML
     private void handleStarButton() {
         currentTool = Tool.STAR;
+    }
+
+    @FXML
+    private void handleSaveButton(){currentTool = Tool.SAVE;}
+
+
+
+    private Shape createModifiedShape(){
+        Shape shape = createShape();
+        shape.setFillColor(fillPicker.getValue());
+        shape.setStrokeColor(strokePicker.getValue());
+        return shape;
     }
 
 
