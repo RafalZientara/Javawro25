@@ -21,6 +21,19 @@ public class Line extends Shape {
     public void draw(GraphicsContext gc) {
         //gc.setFill(getFillColor());
         gc.setStroke(getStrokeColor());
-        gc.strokeLine(startX,startY,endX,endY);
+        gc.strokeLine(startX, startY, endX, endY);
+    }
+
+    @Override
+    public String convertToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("LINE;");
+        sb.append(startX).append(";")
+                .append(startY).append(";")
+                .append(endX).append(";")
+                .append(endY).append(";")
+                .append(getFillColor()).append(";")
+                .append(getStrokeColor()).append(";");
+        return sb.toString();
     }
 }

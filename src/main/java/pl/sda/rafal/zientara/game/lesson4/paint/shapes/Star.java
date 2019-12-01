@@ -9,8 +9,8 @@ public class Star extends Shape{
 
     public Star(double x, double y, double wight, double height) {
         d = Math.min(wight,height);
-        this.x = (x+x+wight)/2;
-        this.y = (y+y+height)/2;
+        this.x = x+wight/2;
+        this.y = y+height/2;
     }
 
     @Override
@@ -42,5 +42,17 @@ public class Star extends Shape{
         gc.fill();
         gc.stroke();
         gc.closePath();
+    }
+
+    @Override
+    public String convertToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("STAR;");
+                sb.append(x).append(";")
+                .append(y).append(";")
+                .append(d).append(";")
+                .append(getFillColor()).append(";")
+                .append(getStrokeColor()).append(";");
+        return sb.toString();
     }
 }

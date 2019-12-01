@@ -33,6 +33,18 @@ public class Triangle extends Shape {
         gc.fill();
         gc.stroke();
         gc.closePath();
+    }
 
+    @Override
+    public String convertToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("TRIANGLE;");
+        sb.append(x).append(";")
+                .append(y).append(";")
+                .append(width).append(";")
+                .append(height).append(";")
+                .append(getFillColor()).append(";")
+                .append(getStrokeColor()).append(";");
+        return sb.toString();
     }
 }

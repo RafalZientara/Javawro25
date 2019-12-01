@@ -42,4 +42,8 @@ public class VectorCanvas extends Canvas {
     public void addShape(Shape newShape){
         shapeList.add(newShape);
     }
+
+    public List<Shape> getShapeList() {
+        return shapeList;
+    }
 }

@@ -22,4 +22,15 @@ public class Square extends Shape{
         gc.fillRect(x, y, side, side);
         gc.strokeRect(x, y, side, side);
     }
+    @Override
+    public String convertToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("SQUARE;");
+        sb.append(x).append(";")
+                .append(y).append(";")
+                .append(side).append(";")
+                .append(getFillColor()).append(";")
+                .append(getStrokeColor()).append(";");
+        return sb.toString();
+    }
 }

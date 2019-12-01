@@ -10,7 +10,7 @@ public class MainPaintJavaFx extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass()
-                .getResource("/paint.fxml"));
+                .getResource("/paint2.fxml"));
         primaryStage.setTitle("Vector paint");
         primaryStage.setScene(new Scene(root, primaryStage.getWidth(),
                 primaryStage.getHeight()));

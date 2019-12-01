@@ -55,4 +55,17 @@ public class Rectangle extends Shape {
         gc.fillRect(x, y, width, height);
         gc.strokeRect(x, y, width, height);
     }
+
+    @Override
+    public String convertToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("RECTANGLE;");
+        sb.append(x).append(";")
+                .append(y).append(";")
+                .append(width).append(";")
+                .append(height).append(";")
+                .append(getFillColor()).append(";")
+                .append(getStrokeColor()).append(";");
+        return sb.toString();
+    }
 }

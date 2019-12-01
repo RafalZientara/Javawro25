@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<?import pl.sda.rafal.zientara.game.lesson4.paint.VectorCanvas?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.sda.rafal.zientara.game.lesson4.paint.VectorPaintController">
+  <children>
+    <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <ColorPicker fx:id="fillPicker" />
+            <ColorPicker fx:id="strokePiker" />
+          </children>
+        </HBox>
+      </bottom>
+      <center>
+        <VectorCanvas fx:id="canvas" height="500.0" scaleX="1.0" scaleY="0.7500000234374999" width="700.0" />
+      </center>
+      <left>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <Button fx:id="rectButton" mnemonicParsing="false" onAction="#handleRectButton" text="Rect" />
+            <Button fx:id="squareButton" mnemonicParsing="false" onAction="#handleSquareButton" text="Square" />
+            <Button fx:id="starButton" mnemonicParsing="false" onAction="#handleStarButton" text="Star" />
+            <Button fx:id="ovalButton" mnemonicParsing="false" onAction="#handleOvalButton" text="Oval" />
+            <Button fx:id="lineButton" mnemonicParsing="false" onAction="#handleLineButton" text="Line" />
+            <Button fx:id="triaButton" mnemonicParsing="false" onAction="#handleTriaButton" text="Tria" />
+          </children>
+        </VBox>
+      </left>
+      <top>
+        <HBox prefHeight="71.0" prefWidth="800.0">
+          <children>
+            <Button fx:id="openButton" mnemonicParsing="false" text="Open" />
+            <Button fx:id="saveButton" mnemonicParsing="false" text="Save" onAction="#handleSaveButton" />
+            <Button fx:id="undoButton" mnemonicParsing="false" text="undo" />
+            <Button fx:id="lastButton" mnemonicParsing="false" text="Button" />
+          </children>
+        </HBox>
+      </top>
+    </BorderPane>
+  </children>
+</AnchorPane>
