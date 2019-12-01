@@ -19,8 +19,21 @@ public class Line extends Shape {
     @Override
     public void draw(GraphicsContext gc) {
         gc.setFill(getFillColor());
-        gc.setStroke(getStrokeColor());
-        gc.strokeLine(x1,y1,x2,y2);
+        gc.setStroke(getStrokeColor());//todo powinnismy zrobic refactor i sie tego pozbyc
+        gc.strokeLine(x1, y1, x2, y2);
+    }
+
+    @Override
+    public String convertToString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("LINE;");
+        builder.append(x1).append(";");
+        builder.append(y1).append(";");
+        builder.append(x2).append(";");
+        builder.append(y2).append(";");
+        builder.append(getFillColor()).append(";");
+        builder.append(getStrokeColor()).append(";");
+        return builder.toString();
 
     }
 }

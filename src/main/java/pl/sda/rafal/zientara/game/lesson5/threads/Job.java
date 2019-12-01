@@ -11,8 +11,12 @@ public class Job implements Runnable {
 
     @Override
     public void run() {
-        doJob();
-        heniek.onJobComplete();
+        try {
+            doJob();
+            heniek.onJobComplete();
+        }catch (Exception e) {
+            heniek.onError(e);
+        }
     }
 
     private void doJob() {
@@ -32,6 +36,7 @@ public class Job implements Runnable {
 
     public interface JobListener {
         void onJobComplete();
+        void onError(Exception e);
     }
 
 }

@@ -52,13 +52,28 @@ public class Triangle extends Shape {
     public void draw(GraphicsContext gc) {
         gc.setFill(getFillColor());
         gc.setStroke(getStrokeColor());
+//        gc.fillRect(x, y, width, height);
+//        gc.strokeRect(x, y, width, height);
         gc.beginPath();
-        gc.moveTo(x,y+ height);
-        gc.lineTo(x + width, y +height);
-        gc.lineTo(x + width /2,y);
-        gc.lineTo(x,y+ height);
-        gc.fill();
+        gc.moveTo(x, y + height);
+        gc.lineTo(x + width, y + height);
+        gc.lineTo(x + width / 2, y);
+        gc.lineTo(x, y + height);
         gc.stroke();
+        gc.fill();
         gc.closePath();
+    }
+
+    @Override
+    public String convertToString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("TRIA;");
+        builder.append(x).append(";");
+        builder.append(y).append(";");
+        builder.append(width).append(";");
+        builder.append(height).append(";");
+        builder.append(getFillColor()).append(";");
+        builder.append(getStrokeColor()).append(";");
+        return builder.toString();
     }
 }

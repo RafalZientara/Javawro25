@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import pl.sda.rafal.zientara.game.lesson4.paint.*?>
+<?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.sda.rafal.zientara.game.lesson4.paint.VectorPaintController">
+<?import pl.sda.rafal.zientara.game.lesson4.paint.VectorCanvas?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.sda.rafal.zientara.game.lesson4.paint.VectorPaintController">
   <children>
-    <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <BorderPane prefHeight="800.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <bottom>
-        <VBox prefHeight="49.0" prefWidth="800.0">
+        <HBox prefHeight="50.0" prefWidth="200.0">
           <children>
-            <Button fx:id="lineButton" blendMode="GREEN" mnemonicParsing="false" onAction="#handleLineButton" prefWidth="100.00009999999747" text="Line" />
-            <Button fx:id="ovalButton" blendMode="GREEN" mnemonicParsing="false" onAction="#handleOvalButton" prefWidth="101.0" text="Oval" />
-            <Button fx:id="starButton" blendMode="GREEN" mnemonicParsing="false" onAction="#handleStarButton" prefWidth="100.00009999999747" text="Star" />
-            <Button fx:id="squaButton" blendMode="GREEN" mnemonicParsing="false" onAction="#handleSquaButton" prefWidth="100.00009999999747" text="Squa" />
-            <Button fx:id="rectButton" blendMode="GREEN" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#handleRectButton" prefWidth="100.00009999999747" text="Rect" />
-            <Button fx:id="triaButton" blendMode="GREEN" depthTest="DISABLE" mnemonicParsing="false" onAction="#handleTriaButton" prefWidth="101.0" text="Tria" />
-
-            <ColorPicker id="FillPickerShape" blendMode="GREEN" />
-            <ColorPicker id="StrokePickerShape" blendMode="GREEN" />
+            <Label text="Fill color:" />
+            <ColorPicker fx:id="fillPicker" />
+            <Label text="Stroke color:" />
+            <ColorPicker fx:id="strokePicker" />
           </children>
-        </VBox>
+        </HBox>
       </bottom>
       <center>
-        <VectorCanvas fx:id="canvas" height="400" scaleX="1.102269868807621" scaleY="1.0617599222319174" width="700" />
+        <VectorCanvas fx:id="canvas" height="400.0" width="700.0" />
       </center>
       <left>
-        <VBox prefHeight="502.0" prefWidth="786.0" />
+        <VBox prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <Button fx:id="rectButton" mnemonicParsing="false" onAction="#handleRectButton" text="Rect" />
+            <Button mnemonicParsing="false" text="Star" />
+            <Button fx:id="squareButton" mnemonicParsing="false" onAction="#handleSquareButton" text="Square" />
+            <Button fx:id="ovalButton" mnemonicParsing="false" onAction="#handleOvalButton" text="Oval" />
+            <Button fx:id="lineButton" mnemonicParsing="false" onAction="#handleLineButton" text="Line" />
+            <Button fx:id="triaButton" mnemonicParsing="false" onAction="#handleTriaButton" text="Tria" />
+          </children>
+        </VBox>
       </left>
       <top>
-        <HBox prefHeight="49.0" prefWidth="800.0">
+        <HBox prefHeight="80.0" prefWidth="200.0">
           <children>
-            <Button fx:id="Save" mnemonicParsing="false" onAction="#handleSaveButton" prefWidth="100.00009999999747" text="Save" />
-            <Button id="Load" mnemonicParsing="false" prefWidth="106.0" text="Load" />
-            <Button id="Undo" mnemonicParsing="false" prefWidth="100.0" text="Undo" />
-            <Button id="Clear" mnemonicParsing="false" prefWidth="100.0" text="Clear" />
-            <ColorPicker fx:id="fillPicker" />
-            <ColorPicker fx:id="strokePicker" />
+            <Button fx:id="save" onAction="#handleSaveButton" mnemonicParsing="false" text="Save" />
+            <Button fx:id="load" onAction="#loadFile" mnemonicParsing="false" text="Load" />
+            <Button fx:id="undo" mnemonicParsing="false" text="Undo" />
+            <Button fx:id="clear" mnemonicParsing="false" text="Clear" />
           </children>
         </HBox>
       </top>
