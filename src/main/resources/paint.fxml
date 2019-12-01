@@ -2,29 +2,64 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
 <?import pl.sda.rafal.zientara.game.lesson4.paint.VectorCanvas?>
-<AnchorPane fx:controller="pl.sda.rafal.zientara.game.lesson4.paint.VectorPaintController" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.sda.rafal.zientara.game.lesson4.paint.VectorPaintController">
   <children>
-    <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <BorderPane prefHeight="1000.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <Label prefHeight="25.0" text="Fill color">
+              <HBox.margin>
+                <Insets left="5.0" right="5.0" top="10.0" fx:id="x3" />
+              </HBox.margin>
+            </Label>
+            <ColorPicker fx:id="fillPicker">
+              <HBox.margin>
+                <Insets right="5.0" top="10.0" fx:id="x1" />
+              </HBox.margin>
+            </ColorPicker>
+            <Label prefHeight="25.0" text="Stroke color" HBox.margin="$x1" />
+            <ColorPicker fx:id="strokePicker" HBox.margin="$x1" />
+          </children>
+        </HBox>
+      </bottom>
       <center>
-        <VectorCanvas fx:id="canvas"
-                      height="500.0"
-                      width="700.0" />
+        <VectorCanvas fx:id="canvas" height="400.0" width="700.0" />
       </center>
       <left>
         <VBox prefHeight="200.0" prefWidth="100.0">
           <children>
-            <Button fx:id="rectButton" onAction="#handleRectButton" mnemonicParsing="false" text="Rect" />
-            <Button fx:id="ovalButton" onAction="#handleOvalButton" mnemonicParsing="false" text="Oval" />
-            <Button fx:id="lineButton" onAction="#handleLineButton" mnemonicParsing="false" text="Line" />
-            <Button fx:id="triaButton" onAction="#handleTriaButton" mnemonicParsing="false" text="Tria" />
+            <Button fx:id="rectButton" mnemonicParsing="false" onAction="#handleRectButton" prefWidth="55.0" text="Rect">
+              <VBox.margin>
+                <Insets bottom="5.0" top="10.0" fx:id="x2" />
+              </VBox.margin>
+            </Button>
+            <Button fx:id="star" mnemonicParsing="false" prefWidth="55.0" text="Star" VBox.margin="$x1" />
+            <Button fx:id="squerButton" mnemonicParsing="false" onAction="#handleSquereButton" prefWidth="55.0" text="Squere" VBox.margin="$x2" />
+            <Button fx:id="ovalButton" mnemonicParsing="false" onAction="#handleOvalButton" prefWidth="55.0" text="Oval" VBox.margin="$x2" />
+            <Button fx:id="lineButton" mnemonicParsing="false" onAction="#handleLineButton" prefWidth="55.0" text="Line" VBox.margin="$x2" />
+            <Button fx:id="triaButton" mnemonicParsing="false" onAction="#handleTriaButton" prefWidth="55.0" text="Tria" VBox.margin="$x2" />
           </children>
         </VBox>
       </left>
+      <top>
+        <HBox prefHeight="50.0" prefWidth="200.0">
+          <children>
+            <Button fx:id="save" onAction="#handleSaveButton" mnemonicParsing="false" text="Save" HBox.margin="$x3" />
+            <Button fx:id="load" mnemonicParsing="false" text="Load" HBox.margin="$x1" />
+            <Button fx:id="undo" mnemonicParsing="false" text="Undo" HBox.margin="$x1" />
+            <Button fx:id="clear" mnemonicParsing="false" text="Clear" HBox.margin="$x1" />
+          </children>
+        </HBox>
+      </top>
     </BorderPane>
   </children>
 </AnchorPane>

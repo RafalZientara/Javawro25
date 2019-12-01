@@ -2,15 +2,21 @@ package pl.sda.rafal.zientara.game.lesson4.paint;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
-import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Oval;
-import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Rectangle;
-import pl.sda.rafal.zientara.game.lesson4.paint.shapes.Shape;
+import pl.sda.rafal.zientara.game.lesson4.paint.shapes.*;
+
+import java.util.List;
+import java.util.Optional;
 
 public class VectorPaintController {
 
     @FXML
     private VectorCanvas canvas;
+    @FXML
+    private ColorPicker strokePicker;
+    @FXML
+    private ColorPicker fillPicker;
 
     private Tool currentTool = Tool.RECTANGLE;
     double startX;
@@ -35,8 +41,9 @@ public class VectorPaintController {
                 endX = event.getX();
                 endY = event.getY();
                 System.out.println("released = " + endX + ", " + endY);
-                Shape shape = createShape();
-                canvas.setCurrentShape(shape);
+                Shape shape = createModifiedShape();
+                canvas.addShape(shape);
+                canvas.setCurrentShape(null);//żeby nie rysowało tego samego
                 canvas.refresh();
             }
         });
@@ -46,7 +53,7 @@ public class VectorPaintController {
                 endX = event.getX();
                 endY = event.getY();
                 System.out.println("dragged = " + endX + ", " + endY);
-                Shape shape = createShape();
+                Shape shape = createModifiedShape();
                 canvas.setCurrentShape(shape);
                 canvas.refresh();
             }
@@ -58,6 +65,8 @@ public class VectorPaintController {
     private void handleRectButton() {
         currentTool = Tool.RECTANGLE;
     }
+    @FXML
+    private void handleSquereButton(){currentTool=Tool.SQUERE;}
 
     @FXML
     private void handleOvalButton() {
@@ -73,6 +82,27 @@ public class VectorPaintController {
     private void handleTriaButton() {
         currentTool = Tool.TRIANGLE;
     }
+    @FXML
+    private  void handleSaveButton(){
+        System.out.println("SAVE!");
+        List<Shape> shapeList=canvas.getShapeList();
+        Optional<String > output=shapeList.stream()
+                .map(shape -> shape.convertToString())
+                .reduce((acc,text)->acc+"\n"+text);// zbieramy wszystko do jednego elementu
+
+        if(output.isPresent()){
+            System.out.println(output.get());
+        }else{
+            System.out.println("Nothing to do here!");
+        }
+    }
+
+    private Shape createModifiedShape(){
+        Shape shape= createShape();
+        shape.setFillColor(fillPicker.getValue());
+        shape.setStrokeColor(strokePicker.getValue());
+        return shape;
+    }
 
     private Shape createShape() {
         double x = Math.min(startX, endX);
@@ -85,6 +115,12 @@ public class VectorPaintController {
                 return new Rectangle(x, y, width, height);
             case OVAL:
                 return new Oval(x, y, width, height);
+            case LINE:
+                return new Line(startX,startY,endX,endY);
+            case TRIANGLE:
+                return new Triangle(x,y,width,height);
+            case SQUERE:
+                return  new Star(x,y,width,height);
         }
     }
 }

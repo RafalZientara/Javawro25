@@ -55,4 +55,17 @@ public class Oval extends Shape {
         gc.fillOval(x, y, width, height);
         gc.strokeOval(x, y, width, height);
     }
+
+    @Override
+    public String convertToString() {
+        StringBuilder builder= new StringBuilder();
+        builder.append("LINE;");
+        builder.append(x).append(";");
+        builder.append(y).append(";");
+        builder.append(width).append(";");
+        builder.append(height).append(";");
+        builder.append(getFillColor()).append(";");
+        builder.append(getStrokeColor()).append(";");
+        return builder.toString();
+    }
 }
