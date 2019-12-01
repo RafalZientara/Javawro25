@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.sda.rafal.zientara.game.lesson6.HangmanController">
+  <children>
+    <Label fx:id="hpLabel" layoutX="14.0" layoutY="14.0" text="HP/7" />
+    <Button layoutX="515.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleResetButton" text="Reset" />
+    <Label fx:id="passwordLabel" layoutX="225.0" layoutY="60.0" prefHeight="129.0" prefWidth="361.0" text="... .. .... lol ale masakra co sie dzieje" wrapText="true">
+      <font>
+        <Font size="35.0" />
+      </font>
+    </Label>
+    <TextField fx:id="letterInput" layoutX="225.0" layoutY="189.0" prefHeight="27.0" prefWidth="361.0" />
+    <Button fx:id="submitButton" layoutX="225.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefWidth="361.0" text="Submit" />
+    <Line fx:id="line1" endX="-54.0" endY="31.0" layoutX="110.0" layoutY="282.0" startX="-79.0" startY="79.0" />
+    <Line fx:id="line2" endX="-75.0" endY="49.0" layoutX="157.0" layoutY="312.0" startX="-100.0" />
+    <Line fx:id="line3" endX="-102.0" endY="-232.0" layoutX="157.0" layoutY="311.0" startX="-100.0" />
+    <Line fx:id="line4" endX="-5.0" endY="1.0" layoutX="155.0" layoutY="79.0" startX="-100.0" />
+    <Line fx:id="line5" endX="-100.0" endY="76.0" layoutX="251.0" layoutY="81.0" startX="-100.0" />
+    <Line fx:id="line6" endX="-58.0" endY="-62.0" layoutX="157.0" layoutY="141.0" startX="-100.0" />
+    <Group id="Group" fx:id="human" layoutX="124.0" layoutY="158.0">
+      <children>
+        <Line endX="-93.0" endY="6.0" layoutX="130.0" layoutY="120.0" startX="-96.0" startY="-23.0" />
+        <Line endX="-81.0" endY="50.0" layoutX="131.0" layoutY="49.0" startX="-88.0" startY="5.0" />
+        <Line endX="87.0" endY="-2.0" layoutX="-71.0" layoutY="53.0" startX="78.0" startY="47.0" />
+        <Circle fill="DODGERBLUE" layoutX="26.0" layoutY="26.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+      </children>
+    </Group>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" layoutX="137.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="28.4141845703125" />
+    <Line endX="97.0" endY="-22.0" layoutX="47.0" layoutY="277.0" startX="99.0" startY="9.0" />
+  </children>
+</AnchorPane>
