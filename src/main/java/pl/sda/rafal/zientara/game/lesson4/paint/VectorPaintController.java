@@ -63,6 +63,10 @@ public class VectorPaintController {
     private void handleOvalButton() {
         currentTool = Tool.OVAL;
     }
+	
+	private Shape createSialala() {
+		ljsdbgvdfj
+	}
 
     @FXML
     private void handleLineButton() {
@@ -73,6 +77,10 @@ public class VectorPaintController {
     private void handleTriaButton() {
         currentTool = Tool.TRIANGLE;
     }
+
+    private Shape createTrololo() {
+		ljsdbgvdfj
+	}
 
     private Shape createShape() {
         double x = Math.min(startX, endX);
