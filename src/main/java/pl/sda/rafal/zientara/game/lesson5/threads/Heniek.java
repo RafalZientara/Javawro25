@@ -23,12 +23,22 @@ public class Heniek implements Job.JobListener {
 
     @Override
     public void onJobComplete() {
+        incrementAndCheck();
+    }
+
+    private void incrementAndCheck() {
         counter.addAndGet(1);
         int finishedThreads = counter.get();
         System.out.println(finishedThreads + "/" + threadsCount);
         if (threadsCount == finishedThreads) {
             System.out.println("Wszystkie watki zakonczyly prace!");
         }
+    }
+
+    @Override
+    public void onError(Exception e) {
+        e.printStackTrace();
+        incrementAndCheck();
     }
 
 

@@ -6,15 +6,21 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.StringUtils;
 import pl.sda.rafal.zientara.game.lesson4.paint.shapes.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class VectorPaintController {
 
@@ -130,6 +136,32 @@ public class VectorPaintController {
             writer.close();
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void loadFile() {
+        final FileChooser fileChooser = new FileChooser();
+        //todo filtr do typow plikow
+        File file = fileChooser.showOpenDialog(new Stage());
+        if (file != null) {
+            openFile(file);
+        }
+    }
+
+    private void openFile(File file) {
+        ShapesFactory factory = new ShapesFactory();
+        try (Stream<String> stream = Files.lines(Paths.get(file.getAbsolutePath()))) {
+            List<Shape> shapes = stream
+                    .filter(StringUtils::isNoneEmpty)//z biblioteki apache commons
+                    //sprawdza czy tekst jest pusty
+                    .map(factory::convertToShape)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
+            canvas.setShapeList(shapes);
+            canvas.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
