@@ -46,6 +46,10 @@ public class VectorCanvas extends Canvas {
         return currentShape;
     }
 
+    public void setShapeList(List<Shape> shapeList) {
+        this.shapeList = shapeList;
+    }
+
     public List<Shape> getShapeList() {
         return shapeList;
     }

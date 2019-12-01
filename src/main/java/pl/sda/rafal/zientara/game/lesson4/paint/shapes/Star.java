@@ -7,7 +7,14 @@ public class Star extends Shape {
     private double y;
     private double diameter;
 
-    public Star(double x, double y, double width, double height) {
+    public Star(double x, double y, double diameter) {
+        this.x = x;
+        this.y = y;
+        this.diameter = diameter;
+    }
+
+    public Star(double x, double y,
+                double width, double height) {
         diameter = Math.min(width, height);
         this.x = (x + x + width) / 2;
         this.y = (y + y + height) / 2;
@@ -47,7 +54,7 @@ public class Star extends Shape {
 
     @Override
     public String convertToString() {
-        return String.format("SQUA;%f;%f;%f;%s;%s;",
+        return String.format("STAR;%f;%f;%f;%s;%s;",
                 x, y, diameter, getFillColor(), getStrokeColor());
     }
 }

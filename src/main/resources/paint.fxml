@@ -41,7 +41,7 @@
         <HBox prefHeight="80.0" prefWidth="200.0">
           <children>
             <Button fx:id="save" onAction="#handleSaveButton" mnemonicParsing="false" text="Save" />
-            <Button fx:id="load" mnemonicParsing="false" text="Load" />
+            <Button fx:id="load" onAction="#loadFile" mnemonicParsing="false" text="Load" />
             <Button fx:id="undo" mnemonicParsing="false" text="Undo" />
             <Button fx:id="clear" mnemonicParsing="false" text="Clear" />
           </children>

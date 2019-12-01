@@ -7,6 +7,12 @@ public class Square extends Shape {
     private double y;
     private double side;
 
+    public Square(double x, double y, double side) {
+        this.x = x;
+        this.y = y;
+        this.side = side;
+    }
+
     public Square(double x, double y, double width, double height) {
         side = Math.min(width, height);
         double xc = (x + x + width) / 2;
